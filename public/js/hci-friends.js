@@ -10,11 +10,11 @@ $(document).ready(function() {
  */
 function initializePage() {
 	console.log("Javascript connected!");
+	$("a.name").click(listenerFunction);
 }
 
 function anagrammedName(name) {
 	// Thanks, Internet Anagram Server!
-	
 	if (name == "Doug Engelbart") {
 		return "Notable Grudge";
 	} 
@@ -37,4 +37,10 @@ function anagrammedName(name) {
 		console.log(name + " not known for anagramming.");
 		return name;
 	}
+}
+
+function listenerFunction(e) {
+	e.preventDefault();
+	var name = $(this).find("h3");
+	name.text(anagrammedName(name.text()));
 }
